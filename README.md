@@ -1,5 +1,5 @@
-# Шаблон для бекенд реализации сайта портфолио
-
+# Time Tree project
+![time tree](https://github.com/andrIvash/time-tree/raw/master/app/img/time-tree.svg)
 Используемые технологии
 
   - Node.js v4.4.2 LTS

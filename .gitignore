@@ -31,7 +31,7 @@ nb-configuration.xml
 .idea
 
 
-
+.DS_Store
 # frontend
 app/assets/
 node_modules/
