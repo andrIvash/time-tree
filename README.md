@@ -6,7 +6,9 @@
 
 ### Технологии
  
- * Node.js v4.4.2 LTS
+ * Node.js v6.9.2 LTS
+ * TypeScript 2.1
+ * Angular 2.4
  
 ### Версия
  
