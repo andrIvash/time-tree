@@ -2,7 +2,7 @@
 ![time tree](https://github.com/andrIvash/time-tree/raw/master/app/img/time-tree.png)
 
 ### Прототип
-![Mokup](http://take.ms/C9dZa)
+[Mokup](http://take.ms/EaygE)
 
 ### Технологии
  
