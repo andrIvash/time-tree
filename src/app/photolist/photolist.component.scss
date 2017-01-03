@@ -1,0 +1,75 @@
+@import '../../assets/styles/mixins';
+
+.photolist__title {
+  font-family: OpenSans;
+  font-size: rem(20px);
+  display: block;
+  border-bottom: 2px solid #414042;
+  color: #414042
+}
+.search {
+  padding: 5px 15px;
+  background-color: #f1f5ed;
+  border-radius: 10px;
+  position: relative;
+  margin-bottom: 20px;
+
+  .search__input {
+    background-color: #f1f5ed;
+    opacity: 0.7;
+    color: #585858;
+    font-family: "OpenSansLight";
+    font-size: rem(14px);
+    border: none;
+    padding-right: 75px;
+    outline: none;
+
+  }
+  .search__button {
+    position: absolute;
+    background: #292727;
+    top: 0;
+    right: 0;
+    height: 32px;
+    width: 80px;
+    border: 1px solid #313144;
+    border-radius: 0 10px 10px 0;
+    color: white;
+    font-family: "OpenSansSemiBold";
+    font-size: rem(12px);
+    cursor: pointer;
+    outline: none;
+  }
+}
+.photolist__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.photolist__item {
+  position: relative;
+  display: block;
+  padding: 0 20px;
+  color: #585858;
+  font-family: "OpenSansLight";
+  font-size: rem(14px);
+  &:before {
+    display: block;
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background: green;
+  }
+  .rm {
+    display: inline-block;
+    content: '';
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background: red;
+  }
+}

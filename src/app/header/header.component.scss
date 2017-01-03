@@ -1,0 +1,18 @@
+@import '../../assets/styles/mixins';
+.logo {
+  width: rem(100px);
+  height: rem(100px);
+  display: inline-block;
+}
+.logo__img {
+  max-width: 100%;
+  height: auto;
+}
+.logo-title {
+  display: inline-block;
+  margin: 0 0 0 rem(50px);
+  font-family: OpenSansBold;
+  font-size: rem(24px);
+  vertical-align: middle;
+  color: #292727;
+}

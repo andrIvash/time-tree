@@ -1,0 +1,17 @@
+@import '../../assets/styles/mixins';
+.nav__button {
+  display: block;
+  width: 68px;
+  height: 25px;
+  background: url('assets/img/menu.png') center center no-repeat;
+  background-size: cover;
+  padding-right: 7px;
+  font-family: 'OpenSansSemiBold';
+  font-size: rem(12px);
+  border: 0;
+  cursor: pointer;
+  color: #fff;
+  &:focus {
+    outline: none;
+  }
+}
