@@ -1,11 +1,30 @@
-<div class="main">
-  <h1>
-    {{title}}
-  </h1>
-  <h1>
-    {{title}}
-  </h1>
+<div class="wrapper">
+    <div class="container">
+        <header class="header">
+            <app-header></app-header>
+            <app-nav></app-nav>
+        </header>
+        <aside class="sidebar">
+            <app-photolist></app-photolist>
+            <app-addblock></app-addblock>
+        </aside>
+        <!-- /.sidebar -->
+        <div class="main">
+            <app-content></app-content>
+        </div>
+        <!-- /.main -->
+    </div>
+    <!-- /.container -->
 </div>
-<!-- /.main -->
+<!-- /.wrapper -->
+<footer class="footer">
+    <div class="container">
+        <div class="copy-right">
+            <p>© 2017 Time Tree. All rights reserved | Design by <a href="http://anivash.com/" target="_blank">http://anivash.com/</a></p>
+        </div>
+    </div>
+    <!-- /.container -->
+</footer>
+<!-- /.footer -->
 
 

@@ -1,0 +1,19 @@
+@import '../assets/styles/fonts';
+@import '../assets/styles/mixins';
+
+.wrapper {
+  font-family: OpenSans;
+  font-size: 1rem;
+}
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.footer {
+  .copy-right {
+    font-family: OpenSansBold;
+    font-size: rem(12px);
+    text-align: center;
+
+  }
+}
