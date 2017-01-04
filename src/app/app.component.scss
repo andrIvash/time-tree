@@ -34,6 +34,14 @@ app-header {
     justify-content: space-between;
     padding: 0 10px;
   }
+  .sidebar {
+    width: 310px;
+  }
+  .content {
+    max-width: 680px;
+    width: 100%;
+    padding: rem(5px) rem(10px);
+  }
 }
 .footer {
   height: rem(100px);

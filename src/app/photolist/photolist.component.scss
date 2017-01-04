@@ -1,27 +1,52 @@
 @import '../../assets/styles/mixins';
 
+.photolist {
+  margin-bottom: rem(30px);
+}
 .photolist__title {
   font-family: OpenSans;
   font-size: rem(20px);
   display: block;
-  border-bottom: 2px solid #414042;
-  color: #414042
+  position: relative;
+  padding: 10px 30px 20px 20px;
+  margin: 5px 0 0 0;
+  color: #414042;
+  background: url('assets/img/title.svg') center center no-repeat;
+  background-size: contain;
+  &:before {
+    display: block;
+    position: absolute;
+    background-color: #414042;
+    height: 2px;
+    width: 80%;
+    left: 21px;
+    bottom: 19px;
+    content: '';
+  }
+}
+.photolist__content {
+  background: url('assets/img/sideback.svg') center center no-repeat;
+  background-size: cover;
+  width: 300px;
+  height: 350px;
+  padding: 10px 5px 5px 5px;
 }
 .search {
+  width: 70%;
+  margin: 35px auto 20px auto;
   padding: 5px 15px;
   background-color: #f1f5ed;
   border-radius: 10px;
   position: relative;
-  margin-bottom: 20px;
 
   .search__input {
     background-color: #f1f5ed;
     opacity: 0.7;
     color: #585858;
     font-family: "OpenSansLight";
-    font-size: rem(14px);
+    font-size: rem(12px);
     border: none;
-    padding-right: 75px;
+    padding-right: 0px;
     outline: none;
 
   }
@@ -31,7 +56,7 @@
     top: 0;
     right: 0;
     height: 32px;
-    width: 80px;
+    width: 66px;
     border: 1px solid #313144;
     border-radius: 0 10px 10px 0;
     color: white;
@@ -43,13 +68,16 @@
 }
 .photolist__list {
   list-style: none;
-  margin: 0;
+  margin: 0 0 rem(10px) rem(20px);
   padding: 0;
+  height: rem(193px);
+  overflow-y: auto;
 }
 .photolist__item {
   position: relative;
   display: block;
-  padding: 0 20px;
+  padding: 0 rem(25px);
+  margin-bottom: 10px;
   color: #585858;
   font-family: "OpenSansLight";
   font-size: rem(14px);
@@ -57,19 +85,50 @@
     display: block;
     position: absolute;
     content: '';
-    top: 0;
+    top: 2px;
     left: 0;
-    width: 10px;
-    height: 10px;
-    background: green;
+    width: 15px;
+    height: 15px;
+    background: url('assets/img/correct.svg') center center no-repeat;
+    background-size: cover;
   }
   .rm {
     display: inline-block;
     content: '';
-    top: 0;
-    right: 0;
-    width: 10px;
-    height: 10px;
-    background: red;
+    top: 3px;
+    position: relative;
+    width: 15px;
+    height: 15px;
+    background: #D52F2F;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    padding: 0;
+    margin-left: 10px;
+    background: url('assets/img/delete.svg') center center no-repeat;
+    background-size: cover;
+
+  }
+}
+.photolist__buttons {
+  display: flex;
+  justify-content: space-around;
+  button {
+    width: rem(70px);
+    height: rem(30px);
+    font-family: OpenSans;
+    font-size: rem(12px);
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: rem(5px);
+    cursor: pointer;
+  }
+  .photolist__apply {
+    background-color: #A3B915;
+  }
+  .photolist__removeall {
+    background-color: #d52f2f;
   }
 }

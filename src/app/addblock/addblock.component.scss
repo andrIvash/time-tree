@@ -1,0 +1,78 @@
+@import '../../assets/styles/mixins';
+
+.addblock {
+  margin-bottom: rem(30px);
+}
+.addblock__title {
+  font-family: OpenSans;
+  font-size: rem(20px);
+  display: block;
+  position: relative;
+  padding: 10px 30px 20px 20px;
+  margin: 5px 0 20px 0;
+  color: #414042;
+  background: url('assets/img/title.svg') center center no-repeat;
+  background-size: contain;
+  &:before {
+    display: block;
+    position: absolute;
+    background-color: #414042;
+    height: 2px;
+    width: 80%;
+    left: 21px;
+    bottom: 19px;
+    content: '';
+  }
+}
+.addblock__content {
+  background-color: #E6E7E8;
+  border-radius: 20px;
+  width: 300px;
+  padding: 10px 15px;
+}
+.addblock__file {
+  width: 70%;
+  margin: 0 auto 20px auto;
+  padding: 5px 15px;
+  background-color: #f1f5ed;
+  border-radius: 10px;
+  position: relative;
+
+  .addblock__input {
+    background-color: #f1f5ed;
+    opacity: 0.7;
+    color: #585858;
+    font-family: "OpenSansLight";
+    font-size: rem(12px);
+    border: none;
+    padding-right: 0px;
+    outline: none;
+    width: 74%;
+
+  }
+  .addblock__button {
+    position: absolute;
+    background: #292727;
+    top: 0;
+    right: 0;
+    height: 32px;
+    width: 66px;
+    border: 1px solid #313144;
+    border-radius: 0 10px 10px 0;
+    color: white;
+    font-family: "OpenSansSemiBold";
+    font-size: rem(12px);
+    cursor: pointer;
+    outline: none;
+  }
+  .addblock__input-true {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 32px;
+    width: 100%;
+    z-index: 20;
+    opacity: 0;
+    cursor: pointer;
+  }
+}
