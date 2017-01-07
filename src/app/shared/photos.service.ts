@@ -1,17 +1,21 @@
 import {Injectable} from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import {Observable} from 'rxjs/Observable';
+import {BehaviorSubject} from 'rxjs/Rx';
 
 @Injectable()
 export class PhotosService {
 
-    public photos: Photo[] = [
+    // public _photos: BehaviorSubject<Photo[]> = new BehaviorSubject([]);
+    private dataPhotos: Photo[] = [
         {
             name: 'item1',
             ext: 'jpg',
             src: './img/item1.jpg',
             description: 'first photo',
             width: 600,
-            height: 300
+            height: 300,
+            size: 150
         },
         {
             name: 'item2',
@@ -19,27 +23,39 @@ export class PhotosService {
             src: './img/item2.jpg',
             description: 'second photo',
             width: 650,
-            height: 350
+            height: 350,
+            size: 2000
         }
     ];
-    public currentPhotos: Subject<Photo> = new Subject<Photo>();
-    public constructor() {}
-    public getPhotos(): Photo[] {
-        return this.photos;
+    private _photos: BehaviorSubject<Photo[]>;
+    public constructor() {
+        this._photos = new BehaviorSubject([]);
     }
-    public changePhoto(photo: Photo): void {
-        this.currentPhotos.next(photo);
+    get photos() {
+        return this._photos.asObservable();
     }
-    public addPhoto(photo: Photo): void {
-        this.photos.push(photo);
+    loadAll() {
+        this._photos.next(this.dataPhotos);
     }
-    public removePhoto(photo: Photo): Photo|boolean {
-        let res = this.photos.find((photo) => {
-
-        });
-        return res ? res : false;
+    addPhoto(newPhoto: Photo): Photo[] | Boolean {
+        let res = this.findPhoto(this.dataPhotos, newPhoto);
+        if (res < 0) {
+            this.dataPhotos.push(newPhoto);
+            this._photos.next(this.dataPhotos);
+            return this.dataPhotos;
+        } else {
+            return false;
+        }
     }
-    private findPhoto (array, elem): number {
+    // public removePhoto(photo: Photo): Photo[]|boolean {
+    //     let res = this.findPhoto(this.photos, photo);
+    //     if (res < 0) {
+    //         return false;
+    //     } else {
+    //         return this.photos.splice(res, 1);
+    //     }
+    // }
+    private findPhoto (array: Photo[], elem: Photo): number {
         for (let i = 0; i < array.length; i++) {
             if (array[i].name === elem.name) {
                 return i;
@@ -54,5 +70,5 @@ export class PhotosService {
 3. обеспечить уникальность
 4. фильтрация элементов по вводимому параметру
 5. добавление элементов в контент согласно списку
-
+6. Вывод списка элементов по запросу к серверу
  */

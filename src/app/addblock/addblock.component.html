@@ -3,7 +3,7 @@
   <div class="addblock__content">
     <div class="addblock__file">
       <input readonly="readonly" placeholder="image.jpg (png)" class="addblock__input">
-      <input type="file" name="addfile" accept="image/jpeg,image/png,image/gif" class="addblock__input-true">
+      <input type="file" name="addfile" accept="image/jpeg,image/png,image/gif" class="addblock__input-true" (change)="fileUpload($event.target)">
       <button type="button" class="addblock__button">Choose...</button>
     </div>
   </div>

@@ -10,6 +10,8 @@ import { AddblockComponent } from './addblock/addblock.component';
 import { NavComponent } from './nav/nav.component';
 import { ContentComponent } from './content/content.component';
 
+import {PhotosService} from './shared/photos.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,7 @@ import { ContentComponent } from './content/content.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [PhotosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

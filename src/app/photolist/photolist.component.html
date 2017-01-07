@@ -6,8 +6,8 @@
           <button type="button" class="search__button">Search</button>
       </div>
       <ul class="photolist__list">
-          <li *ngFor="let photo of photoList; let i=index" (click)="changePhoto(photo)"
-              class="photolist__item">{{photo.name}}<button type="button" class="rm"></button></li>
+          <li *ngFor="let photo of photos; let i=index" (click)="changePhoto(photo)"
+              class="photolist__item">{{photo.name}}<button type="button" class="rm" (click)="removePhoto(photo)"></button></li>
       </ul>
       <div class="photolist__buttons">
           <button type="button" class="photolist__apply">Apply</button>

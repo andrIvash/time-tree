@@ -4,5 +4,6 @@ interface Photo {
     src: string,
     description: string,
     width: number,
-    height: number
+    height: number,
+    size: number
 };
