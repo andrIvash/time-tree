@@ -23,11 +23,11 @@ export class AddblockComponent implements OnInit {
             height: 0,
             size: elem.files[0].size
         };
-        let res: Photo[] | Boolean = this._photosService.addPhoto(photo);
+        let res: Photo[] | boolean = this._photosService.addPhoto(photo);
         if (res) {
             console.log(res);
         } else {
-            console.log('file with same name exist');
+            console.error('file with same name exist');
         }
     }
 

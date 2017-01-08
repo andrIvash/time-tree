@@ -37,7 +37,7 @@ export class PhotosService {
     loadAll() {
         this._photos.next(this.dataPhotos);
     }
-    addPhoto(newPhoto: Photo): Photo[] | Boolean {
+    addPhoto(newPhoto: Photo): Photo[] | boolean {
         let res = this.findPhoto(this.dataPhotos, newPhoto);
         if (res < 0) {
             this.dataPhotos.push(newPhoto);

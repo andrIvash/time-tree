@@ -11,6 +11,7 @@ import { NavComponent } from './nav/nav.component';
 import { ContentComponent } from './content/content.component';
 
 import {PhotosService} from './shared/photos.service';
+import { PhotosPipe } from './shared/photos.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {PhotosService} from './shared/photos.service';
     PhotolistComponent,
     AddblockComponent,
     NavComponent,
-    ContentComponent
+    ContentComponent,
+    PhotosPipe
   ],
   imports: [
     BrowserModule,
