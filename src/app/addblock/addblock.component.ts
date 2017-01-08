@@ -17,7 +17,7 @@ export class AddblockComponent implements OnInit {
         let photo: Photo = {
             name: elem.files[0].name,
             ext: elem.files[0].type,
-            src: './img' + elem.files[0].name + elem.files[0].type,
+            src: `./photos/${elem.files[0].name}${elem.files[0].type}`,
             description: 'descr',
             width: 0,
             height: 0,
