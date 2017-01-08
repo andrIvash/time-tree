@@ -47,14 +47,14 @@ export class PhotosService {
             return false;
         }
     }
-    // public removePhoto(photo: Photo): Photo[]|boolean {
-    //     let res = this.findPhoto(this.photos, photo);
-    //     if (res < 0) {
-    //         return false;
-    //     } else {
-    //         return this.photos.splice(res, 1);
-    //     }
-    // }
+    public removePhoto(photo: Photo): Photo[]|boolean {
+        let res = this.findPhoto(this.dataPhotos, photo);
+        if (res < 0) {
+            return false;
+        } else {
+            return this.dataPhotos.splice(res, 1);
+        }
+    }
     private findPhoto (array: Photo[], elem: Photo): number {
         for (let i = 0; i < array.length; i++) {
             if (array[i].name === elem.name) {
