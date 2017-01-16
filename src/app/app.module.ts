@@ -12,6 +12,8 @@ import { ContentComponent } from './content/content.component';
 
 import {PhotosService} from './shared/photos.service';
 import { PhotosPipe } from './shared/photos.pipe';
+import {BtnService} from './shared/btn.service';
+import { DynamicPhotoComponent } from './dynamic-photo/dynamic-photo.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +23,15 @@ import { PhotosPipe } from './shared/photos.pipe';
     AddblockComponent,
     NavComponent,
     ContentComponent,
-    PhotosPipe
+    PhotosPipe,
+    DynamicPhotoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [PhotosService],
+  providers: [PhotosService, BtnService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

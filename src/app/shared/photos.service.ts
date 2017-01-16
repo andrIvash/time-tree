@@ -1,6 +1,4 @@
 import {Injectable} from '@angular/core';
-import { Subject } from 'rxjs/Subject';
-import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/Rx';
 
 @Injectable()
@@ -34,7 +32,7 @@ export class PhotosService {
     get photos() {
         return this._photos.asObservable();
     }
-    loadAll() {
+    next() {
         this._photos.next(this.dataPhotos);
     }
     addPhoto(newPhoto: Photo): Photo[] | boolean {
@@ -62,6 +60,9 @@ export class PhotosService {
             }
         }
         return -1;
+    }
+    getAll () {
+        return this.dataPhotos;
     }
 }
 /*

@@ -9,9 +9,9 @@
           <li *ngFor="let photo of photos | async | photosFilter:photosName; let i=index"
               class="photolist__item">{{photo.name}}<button type="button" class="rm" (click)="removePhoto(photo)"></button></li>
       </ul>
-      <div class="photolist__buttons">
-          <button type="button" class="photolist__apply">Apply</button>
-          <button type="button" class="photolist__removeall">Clear All</button>
+      <div class="photolist__buttons" #btnGroup>
+          <button type="button" class="photolist__apply" (click)="clickBtn($event)">Apply</button>
+          <button type="button" class="photolist__removeall" (click)="clickBtn($event)">Clear All</button>
       </div>
   </div>
 </div>

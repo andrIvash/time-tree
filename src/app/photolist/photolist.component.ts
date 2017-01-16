@@ -1,6 +1,8 @@
 import {Component, ViewEncapsulation, OnInit} from '@angular/core';
-import {PhotosService} from '../shared/photos.service';
 import {Observable} from 'rxjs';
+import {PhotosService} from '../shared/photos.service';
+import {BtnService} from '../shared/btn.service';
+
 
 @Component({
     selector: 'app-photolist',
@@ -11,7 +13,7 @@ import {Observable} from 'rxjs';
 export class PhotolistComponent implements OnInit {
     public photos: Observable<Photo[]>;
     public photosName: string = '';
-    constructor(private _photosService: PhotosService) {}
+    constructor(private _photosService: PhotosService, private _btnService: BtnService) {}
     public removePhoto(photo: Photo) {
         let res: Photo[] | boolean = this._photosService.removePhoto(photo);
         if (res) {
@@ -20,9 +22,12 @@ export class PhotolistComponent implements OnInit {
             console.error('error delete file');
         }
     }
+    public clickBtn (e: MouseEvent) {
+        this._btnService.click(e);
+    }
     ngOnInit() {
         this.photos = this._photosService.photos;
-        this._photosService.loadAll();
+        this._photosService.next();
     }
 
 }
