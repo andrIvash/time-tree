@@ -14,6 +14,7 @@ export class PhotolistComponent implements OnInit {
     public photos: Observable<Photo[]>;
     public photosName: string = '';
     constructor(private _photosService: PhotosService, private _btnService: BtnService) {}
+    // удаление элемента
     public removePhoto(photo: Photo) {
         let res: Photo[] | boolean = this._photosService.removePhoto(photo);
         if (res) {
@@ -22,6 +23,7 @@ export class PhotolistComponent implements OnInit {
             console.error('error delete file');
         }
     }
+    // обработчик нажатия на кнопку
     public clickBtn (e: MouseEvent) {
         this._btnService.click(e);
     }

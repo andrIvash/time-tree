@@ -1,0 +1,34 @@
+@import '../../assets/styles/mixins';
+
+.foto {
+  width: 250px;
+  min-height: 120px;
+  display: inline-block;
+  border-radius: 15px;
+  padding: 10px;
+  background-color: #e6e7e8;
+  margin: 5px;
+  text-align: center;
+  &:first-child {
+    margin-left: 0;
+  }
+}
+.foto__wrapper {
+  width: 220px;
+  height: 105px;
+  overflow: hidden;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+.foto__img {
+  max-width: 100%;
+  height: auto;
+}
+.foto__descr {
+  text-align: left;
+  background: #fff;
+  font-family: "OpenSansLight";
+  font-size: rem(12px);
+  padding: 5px;
+  border-radius: 10px;
+}

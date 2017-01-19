@@ -8,8 +8,8 @@ export class PhotosService {
     private dataPhotos: Photo[] = [
         {
             name: 'item1',
-            ext: 'jpg',
-            src: './img/item1.jpg',
+            ext: 'jpeg',
+            src: './assets/img/samples/img1.jpeg',
             description: 'first photo',
             width: 600,
             height: 300,
@@ -17,9 +17,18 @@ export class PhotosService {
         },
         {
             name: 'item2',
-            ext: 'png',
-            src: './img/item2.jpg',
+            ext: 'jpg',
+            src: './assets/img/samples/img2.jpg',
             description: 'second photo',
+            width: 650,
+            height: 350,
+            size: 2000
+        },
+        {
+            name: 'item3',
+            ext: 'jpeg',
+            src: './assets/img/samples/img3.jpeg',
+            description: 'third photo',
             width: 650,
             height: 350,
             size: 2000

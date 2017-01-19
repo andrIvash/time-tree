@@ -1,17 +1,16 @@
-import { Component, OnInit, Injector } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
-  selector: 'app-dynamic-photo',
-  templateUrl: './dynamic-photo.component.html',
-  styleUrls: ['./dynamic-photo.component.scss']
+    selector: 'app-dynamic-photo',
+    templateUrl: './dynamic-photo.component.html',
+    styleUrls: ['./dynamic-photo.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class DynamicPhotoComponent implements OnInit {
-  private showNum = 0;
-  constructor(private _injector: Injector) {
-    // this.showNum = this._injector.get('showNum');
-  }
+    constructor() {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }

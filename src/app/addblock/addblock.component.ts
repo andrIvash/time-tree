@@ -1,6 +1,5 @@
-import {Component, ViewEncapsulation, OnInit, OnDestroy} from '@angular/core';
+import {Component, ViewEncapsulation, OnInit} from '@angular/core';
 import {PhotosService} from '../shared/photos.service';
-import {BtnService} from '../shared/btn.service';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
 
@@ -11,10 +10,12 @@ import 'rxjs/add/operator/filter';
     styleUrls: ['./addblock.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class AddblockComponent implements OnInit, OnDestroy {
+export class AddblockComponent implements OnInit {
     private _photos: Observable<Photo[]>;
-    constructor(private _photosService: PhotosService,  private _btnService: BtnService) {}
+    private _file: any;
+    constructor(private _photosService: PhotosService) {}
     public fileUpload(elem) {
+        this._file = elem.files[0];
         elem.previousElementSibling.placeholder = elem.files[0].name;
         let photo: Photo = {
             name: elem.files[0].name,
@@ -28,42 +29,37 @@ export class AddblockComponent implements OnInit, OnDestroy {
         let res: Photo[] | boolean = this._photosService.addPhoto(photo);
         if (res) {
             console.log(res);
+            this.makeFileRequest('http://localhost:3000/upload', [], this._file).then((result) => {
+                console.log(result);
+            }, (error) => {
+                console.error(error);
+            });
         } else {
             console.error('file with same name exist');
         }
     }
+    public makeFileRequest(url: string, params: Array<string>, file: any) {
+        return new Promise((resolve, reject) => {
+            const formData: any = new FormData();
+            const xhr = new XMLHttpRequest();
+            formData.append('uploads', file, file.name);
+            // for(let i = 0; i < files.length; i++) {
+            //     formData.append("uploads[]", files[i], files[i].name);
+            // }
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        resolve(JSON.parse(xhr.response));
+                    } else {
+                        reject(xhr.response);
+                    }
+                }
+            };
+            xhr.open('POST', url, true);
+            xhr.send(formData);
+        });
+    }
 
-    ngOnInit() {
-        // this._btnService.clickSubscript().subscribe(x => {
-        //    console.log(x.target);
-        // });
-        // this._btn = this._btnService.btn;
-        // this._btn.filter((e: MouseEvent) => (e.target as HTMLButtonElement).className === 'photolist__apply')
-        //     .subscribe((x) => {
-        //         console.log(x);
-        //     });
-        // this._photos = this._photosService.photos;
-        // this._photosService.loadAll();
-        // let btn: Observable<Event> = Observable.fromEvent<Event>(document, 'click');
-        // btn
-        //     .filter((e: MouseEvent) => (e.target as HTMLButtonElement).className === 'photolist__apply')
-        //     .subscribe(() => {
-        //        console.log(Observable.from(this._photos).map(x => {return x}));
-        //            // .subscribe(x => x.forEach((elem: Photo) => console.log(elem)));
-        //     });
-    // .mergeMap((ev: MouseEvent) => {
-    //         return this._photos.filter((elem: any) => elem.name === 'elem1');
-    //     });
-        // this.tab = Observable.fromEvent<Event>(this.tabGroup.nativeElement, 'click');
-        // this.tab.subscribe((event: Event) => {
-        // this.currentTabState = (event.target as HTMLAnchorElement).hash;
-        // console.log(this.currentTabState);
-        // public doClick(e) {
-        //   this._btn.next(e);
-        // }
-    }
-    ngOnDestroy() {
-        // this._btn.unsubcribe();
-    }
+    ngOnInit() {}
 
 }

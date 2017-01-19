@@ -6,4 +6,4 @@ interface Photo {
     width: number,
     height: number,
     size: number
-};
+}
