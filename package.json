@@ -5,15 +5,14 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start" : "./node_modules/nodemon/bin/nodemon.js ./server/server.js",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor",
     "build": "ng build && node server.js",
-    "build:nodeserver": "ng build && nodemon server.js",
-    "build:prod": "ng build -prod && nodemon server.js",
-    "nodemon:": "nodemon --watch app --watch libs app/server.js"
+    "build:nodeserver": "ng build && ./node_modules/nodemon/bin/nodemon.js ./server/server.js",
+    "build:prod": "ng build -prod && ./node_modules/nodemon/bin/nodemon.js ./server/server.js"
   },
   "private": true,
   "dependencies": {
@@ -50,6 +49,9 @@
     "protractor": "~4.0.13",
     "ts-node": "1.2.1",
     "tslint": "^4.0.2",
-    "typescript": "~2.0.3"
+    "typescript": "~2.0.3",
+    "mime-types": "^2.1.10",
+    "errorhandler": "^1.4.3",
+    "multer": "^1.1.0"
   }
 }
