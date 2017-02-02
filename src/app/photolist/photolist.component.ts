@@ -12,6 +12,7 @@ import {BtnService} from '../shared/btn.service';
 })
 export class PhotolistComponent implements OnInit {
     public photos: Observable<Photo[]>;
+    public p: Observable<any>;
     public photosName: string = '';
     constructor(private _photosService: PhotosService, private _btnService: BtnService) {}
     // удаление элемента
@@ -28,8 +29,9 @@ export class PhotolistComponent implements OnInit {
         this._btnService.click(e);
     }
     ngOnInit() {
-        this.photos = this._photosService.photos;
-        this._photosService.next();
+        console.log(this._photosService.photos);
+        // this.photos = this._photosService.photos;
+        console.log(this._photosService.next());
     }
 
 }

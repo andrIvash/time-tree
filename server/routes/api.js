@@ -43,7 +43,6 @@ router.route('/photos')
         });
     })
     .get((req, res, next) => {
-        console.log(photoDir);
         fs.readdir(photoDir, (err, files) => {
             if(err) {
                 return next(new HttpError(500, 'Directory not found'));

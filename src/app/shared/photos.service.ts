@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs/Rx';
+import {Observable} from 'rxjs/Observable';
+import {Http} from '@angular/http';
 
 @Injectable()
 export class PhotosService {
 
-    // public _photos: BehaviorSubject<Photo[]> = new BehaviorSubject([]);
-    private dataPhotos: Photo[] = [
+    private _dataPhotos: Photo[] = [
         {
             name: 'item1',
             ext: 'jpeg',
@@ -34,32 +35,56 @@ export class PhotosService {
             size: 2000
         }
     ];
+    private _apiUrl: string = 'http://localhost:3000/api/photos';
     private _photos: BehaviorSubject<Photo[]>;
-    public constructor() {
+    private _apiData: Observable<any>;
+    public getUsers(): void {
+        this._apiData = this._http.get(this._apiUrl)
+            .map(res => res.json())
+            .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+        this._apiData.subscribe((value) => {
+            value.forEach((elem) => {
+                this._dataPhotos.push(
+                    {
+                        name: '',
+                        ext: '',
+                        src: elem,
+                        description: '',
+                        width: 0,
+                        height: 0,
+                        size: 0
+                    });
+            });
+        });
+    };
+
+    public constructor(private _http: Http) {
         this._photos = new BehaviorSubject([]);
+        this.getUsers();
     }
     get photos() {
         return this._photos.asObservable();
     }
     next() {
-        this._photos.next(this.dataPhotos);
+        this._photos.next(this._dataPhotos);
+        return this._dataPhotos;
     }
     addPhoto(newPhoto: Photo): Photo[] | boolean {
-        let res = this.findPhoto(this.dataPhotos, newPhoto);
+        let res = this.findPhoto(this._dataPhotos, newPhoto);
         if (res < 0) {
-            this.dataPhotos.push(newPhoto);
-            this._photos.next(this.dataPhotos);
-            return this.dataPhotos;
+            this._dataPhotos.push(newPhoto);
+            this._photos.next(this._dataPhotos);
+            return this._dataPhotos;
         } else {
             return false;
         }
     }
     public removePhoto(photo: Photo): Photo[]|boolean {
-        let res = this.findPhoto(this.dataPhotos, photo);
+        let res = this.findPhoto(this._dataPhotos, photo);
         if (res < 0) {
             return false;
         } else {
-            return this.dataPhotos.splice(res, 1);
+            return this._dataPhotos.splice(res, 1);
         }
     }
     private findPhoto (array: Photo[], elem: Photo): number {
@@ -71,8 +96,9 @@ export class PhotosService {
         return -1;
     }
     getAll () {
-        return this.dataPhotos;
+        return this._dataPhotos;
     }
+
 }
 /*
 1. добавить элемент
